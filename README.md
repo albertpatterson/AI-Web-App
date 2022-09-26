@@ -55,11 +55,11 @@ You can access a variety of pretrained models from https://www.tensorflow.org/js
 1. Add the required scripts to public/index.html to load the model:
 
    - ![HTML change](./doc/index_change.png 'HTML change')
-   - ```
-      <!-- Load TensorFlow.js. This is required to use coco-ssd model. -->
-      <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-      <!-- Load the coco-ssd model. -->
-      <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+   - ```html
+     <!-- Load TensorFlow.js. This is required to use coco-ssd model. -->
+     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+     <!-- Load the coco-ssd model. -->
+     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
      ```
 
 1. Update the Javascript code to use the model and identify objects in the image. Add the following changes to public/capture.js:
@@ -67,31 +67,31 @@ You can access a variety of pretrained models from https://www.tensorflow.org/js
    1. Change #1
 
       - ![JS change 1](./doc/js_change_1.png 'JS change #1')
-      - ```
-         var model = null;
+      - ```javascript
+        var model = null;
 
-         function getModel() {
-            return new Promise((resolve) => {
-               if (model) {
-               resolve(model);
-               }
-               cocoSsd.load().then((loadedModel) => {
-               model = loadedModel;
-               resolve(model);
-               });
+        function getModel() {
+          return new Promise((resolve) => {
+            if (model) {
+              resolve(model);
+            }
+            cocoSsd.load().then((loadedModel) => {
+              model = loadedModel;
+              resolve(model);
             });
-         }
+          });
+        }
         ```
 
    2. Change #2
       - ![JS change 2](./doc/js_change_2.png 'JS change #2')
-      - ```
-         getModel();
+      - ```javascript
+        getModel();
         ```
    3. Change #3
 
       - ![JS change 3](./doc/js_change_3.png 'JS change #3')
-      - ```
+      - ```javascript
         var img = document.getElementById('photo');
         getModel().then((model) => {
           // detect objects in the image.
