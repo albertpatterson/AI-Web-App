@@ -23,17 +23,17 @@ Firebase is ideal for experimental or early stage projects.
 
 1. Login to [Firebase](https://firebase.google.com/) (may need to login with Google credentials)
 1. Create a project
-   ![create a project](./doc/fb_intro.gif 'Create a project')
+   <br>![create a project](./doc/fb_intro.gif 'Create a project')
 1. Configure hosting
    - View setup instructions
-     ![setup hosting via website](./doc/setup_hosting.gif 'Setup hosting via website')
+     <br>![setup hosting via website](./doc/setup_hosting.gif 'Setup hosting via website')
    - Setup hosting via the CLI
-     ![setup hosting via cli](./doc/setup_hosting_cli.gif 'Setup hosting via CLI')
+     <br>![setup hosting via cli](./doc/setup_hosting_cli.gif 'Setup hosting via CLI')
 1. Serve the default app: `firebase serve`
 1. visit http://localhost:5000 to see the default app
 1. Deploy the default app: `firebase deploy`
 1. Visit your app running on the web at the "Hosting URL"
-   ![after running deploy command](./doc/hosting_success.png 'After running deploy command')
+   <br>![after running deploy command](./doc/hosting_success.png 'After running deploy command')
 
 ## Capture Images
 
