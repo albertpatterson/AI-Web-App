@@ -4,6 +4,7 @@ The app will capture images and then apply deep learning to identify and classif
 
 Requirements:
 
+- [ ] gmail account
 - [ ] npm & node.js (test with `npm --version`)
 - [ ] git (test with `git --version`)
 - [ ] webcam
