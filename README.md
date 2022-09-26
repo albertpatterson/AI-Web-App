@@ -29,9 +29,9 @@ Firebase is ideal for experimental or early stage projects.
 
 ## Capture Images
 
-We will base app on the excellent article on MDN about [Taking shill photos with getUserMedia](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API/Taking_still_photos#).
+We will base our app on the excellent article on MDN about [Taking shill photos with getUserMedia](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API/Taking_still_photos#).
 
-This article has excellent explanations of the concepts used as well as source code that we can download to run the app ourselves.
+This article has great explanations of the concepts used as well as source code that we can download to run the app ourselves.
 
 I encourage everyone to have a look at the article for more information once we are done.
 
@@ -45,5 +45,68 @@ For now, we will simply copy the source code and use it as the foundation of our
 
 You can access a variety of pretrained models from https://www.tensorflow.org/js/models which are ready to use. For our application we will use the [object detection model](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd)
 
-1. Add the required scripts to public/index.html to load the model.
-2. Update the Javascript code to use the model and identify objects in the image.
+1. Add the required scripts to public/index.html to load the model:
+
+   - ![HTML change](./doc/index_change.png 'HTML change')
+   - ```
+      <!-- Load TensorFlow.js. This is required to use coco-ssd model. -->
+      <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+      <!-- Load the coco-ssd model. -->
+      <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+     ```
+
+1. Update the Javascript code to use the model and identify objects in the image. Add the following changes to public/capture.js:
+
+   1. Change #1
+
+      - ![JS change 1](./doc/js_change_1.png 'JS change #1')
+      - ```
+         var model = null;
+
+         function getModel() {
+            return new Promise((resolve) => {
+               if (model) {
+               resolve(model);
+               }
+               cocoSsd.load().then((loadedModel) => {
+               model = loadedModel;
+               resolve(model);
+               });
+            });
+         }
+        ```
+
+   2. Change #2
+      - ![JS change 2](./doc/js_change_2.png 'JS change #2')
+      - ```
+         getModel();
+        ```
+   3. Change #3
+
+      - ![JS change 3](./doc/js_change_3.png 'JS change #3')
+      - ```
+        var img = document.getElementById('photo');
+        getModel().then((model) => {
+          // detect objects in the image.
+          model.detect(img).then((predictions) => {
+            console.log('Predictions: ', predictions);
+            context.font = '24px serif';
+            context.strokeStyle = 'green';
+            context.fillStyle = 'green';
+
+            for (const prediction of predictions) {
+              const [x, y, height, width] = prediction.bbox;
+              context.strokeRect(x, y, height, width);
+              context.fillText(prediction.class, x, y);
+            }
+
+            const data = canvas.toDataURL('image/png');
+            photo.setAttribute('src', data);
+          });
+        });
+        ```
+
+1. Run `firebase deploy`
+1. Visit the app running on the hosted url
+   - ![Running example](./doc/app_example.png 'Running example')
+1. Share the app you built, and have some fun!

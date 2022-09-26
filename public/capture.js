@@ -18,6 +18,19 @@
   var canvas = null;
   var photo = null;
   var startbutton = null;
+  var model = null;
+
+  function getModel() {
+    return new Promise((resolve) => {
+      if (model) {
+        resolve(model);
+      }
+      cocoSsd.load().then((loadedModel) => {
+        model = loadedModel;
+        resolve(model);
+      });
+    });
+  }
 
   function startup() {
     video = document.getElementById('video');
@@ -68,6 +81,7 @@
     );
 
     clearphoto();
+    getModel();
   }
 
   // Fill the photo with an indication that none has been
@@ -97,6 +111,25 @@
 
       var data = canvas.toDataURL('image/png');
       photo.setAttribute('src', data);
+      var img = document.getElementById('photo');
+      getModel().then((model) => {
+        // detect objects in the image.
+        model.detect(img).then((predictions) => {
+          console.log('Predictions: ', predictions);
+          context.font = '24px serif';
+          context.strokeStyle = 'green';
+          context.fillStyle = 'green';
+
+          for (const prediction of predictions) {
+            const [x, y, height, width] = prediction.bbox;
+            context.strokeRect(x, y, height, width);
+            context.fillText(prediction.class, x, y);
+          }
+
+          const data = canvas.toDataURL('image/png');
+          photo.setAttribute('src', data);
+        });
+      });
     } else {
       clearphoto();
     }
