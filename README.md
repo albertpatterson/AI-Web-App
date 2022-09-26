@@ -1,6 +1,13 @@
-# Make Your Own Artificial Intelligence Web App
+# Make Your Own Artificial Intelligence Driven Web App
 
 The app will capture images and then apply deep learning to identify and classify objects in the image.
+
+Requirements:
+
+- [ ] npm & node.js (test with `npm --version`)
+- [ ] git (test with `git --version`)
+- [ ] webcam
+- [ ] internet connection
 
 ## Firebase
 
@@ -9,11 +16,11 @@ To serve and eventually host our app, we will use [Firebase](https://firebase.go
 Firebase provides access to many of the same resource and services as [Google Cloud Platform](https://cloud.google.com/) with a few differences
 
 - Firebase can be uses without a credit card. Both Google Cloud Platform and Firebase offer free trials, but Google Cloud Platform requires a credit card to start.
-- Firebase offers a small subset of the resources and services that Google Cloud Platform does, but those that it does offer are those most commonly used for simple applications.
+- Firebase offers a small subset of the resources and services that Google Cloud Platform does, but those that it does offer are what is most commonly used for simple applications.
 
 Firebase is ideal for experimental or early stage projects.
 
-1. Login to Firebase (may need to login with Google credentials)
+1. Login to [Firebase](https://firebase.google.com/) (may need to login with Google credentials)
 1. Create a project
    ![create a project](./doc/fb_intro.gif 'Create a project')
 1. Configure hosting
@@ -29,7 +36,7 @@ Firebase is ideal for experimental or early stage projects.
 
 ## Capture Images
 
-We will base our app on the excellent article on MDN about [Taking shill photos with getUserMedia](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API/Taking_still_photos#).
+We will base our app on the excellent article on MDN about [Taking still photos with getUserMedia](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API/Taking_still_photos#).
 
 This article has great explanations of the concepts used as well as source code that we can download to run the app ourselves.
 
@@ -110,3 +117,10 @@ You can access a variety of pretrained models from https://www.tensorflow.org/js
 1. Visit the app running on the hosted url
    - ![Running example](./doc/app_example.png 'Running example')
 1. Share the app you built, and have some fun!
+
+## Extra Credit
+
+1. Make the app run continuously to identify objects whenever they are in view of the camera
+1. Make the app your own, with custom style, layout, and information
+1. Make the app responsive (so that it works well on a phone)
+1. Show an alert whenever an interesting object is detected.
