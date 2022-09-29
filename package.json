@@ -1,0 +1,35 @@
+{
+  "name": "img-mlk",
+  "version": "1.0.0",
+  "description": "The app will capture images and then apply deep learning to identify and classify objects in the image.",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "step-0": "node ./step/init.js",
+    "step-1": "npm install -g firebase-tools; firebase login",
+    "step-2": "firebase init",
+    "step-3": "firebase serve",
+    "step-4": "firebase deploy",
+    "step-5": "node ./step/clone_image_capture_app.js",
+    "step-6": "firebase serve",
+    "step-7": "firebase deploy",
+    "step-8": "node ./step/add_machine_learning.js",
+    "step-9": "firebase serve",
+    "step-10": "firebase deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertpatterson/AI-Web-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertpatterson/AI-Web-App/issues"
+  },
+  "homepage": "https://github.com/albertpatterson/AI-Web-App#readme",
+  "type": "module",
+  "dependencies": {}
+}

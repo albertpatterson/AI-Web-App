@@ -10,6 +10,11 @@ Requirements:
 - [ ] webcam
 - [ ] internet connection
 
+## initial
+
+1. Clean up any previous solutions with the provided script; just run `npm run step-0`
+1. Install the firebase cli and login by running `npm run step-1`
+
 ## Firebase
 
 To serve and eventually host our app, we will use [Firebase](https://firebase.google.com/).
@@ -29,9 +34,10 @@ Firebase is ideal for experimental or early stage projects.
      <br>![setup hosting via website](./doc/setup_hosting.gif 'Setup hosting via website')
    - Setup hosting via the CLI
      <br>![setup hosting via cli](./doc/setup_hosting_cli.gif 'Setup hosting via CLI')
-1. Serve the default app: `firebase serve`
+     - run `firebase init` or just `npm run step-2`, which does exactly that
+1. Serve the default app: `firebase serve` (or `npm run step-3`)
 1. visit http://localhost:5000 to see the default app
-1. Deploy the default app: `firebase deploy`
+1. Deploy the default app: `firebase deploy` (or `npm run step-4`)
 1. Visit your app running on the web at the "Hosting URL"
    <br>![after running deploy command](./doc/hosting_success.png 'After running deploy command')
 
@@ -43,10 +49,11 @@ This article has great explanations of the concepts used as well as source code 
 
 I encourage everyone to have a look at the article for more information once we are done.
 
-For now, we will simply copy the source code and use it as the foundation of our app using the `setup.sh` script.
+For now, we will simply copy the source code and use it as the foundation of our app using the provided script.
 
-1. Run `./setup.sh` this will replace the default app
-1. Run `firebase deploy`
+1. Run `npm run step-5` this will replace the default app
+1. Run `firebase serve` (or `npm run step-6`) to see the new app
+1. Run `firebase deploy` (or `npm run step-7`) to deploy the new version
 1. Visit your app at the hosting url again to see the image capture app
 
 ## Add Machine learning
@@ -114,7 +121,8 @@ You can access a variety of pretrained models from https://www.tensorflow.org/js
         });
         ```
 
-1. Run `firebase deploy`
+1. Run `firebase serve` to see the new version running locally
+1. Run `firebase deploy` to deploy the new vewsion when it's working
 1. Visit the app running on the hosted url
    - ![Running example](./doc/app_example.png 'Running example')
 1. Share the app you built, and have some fun!
@@ -125,3 +133,9 @@ You can access a variety of pretrained models from https://www.tensorflow.org/js
 1. Make the app your own, with custom style, layout, and information
 1. Make the app responsive (so that it works well on a phone)
 1. Show an alert whenever an interesting object is detected.
+
+## Notes
+
+- This can be done on [replit](https://replit.com/) with the following changes
+  - logging in is a bit cumbersome (need to manually visit challenge url)
+  - serve via `firebase serve -o 0.0.0.0`
