@@ -65,7 +65,7 @@ You can access a variety of pretrained models from https://www.tensorflow.org/js
 
 1. Update the Javascript code to use the model and identify objects in the image. Add the following changes to public/capture.js:
 
-   1. Change #1
+   1. Change #1: Create a function to load the machine learning model and store it for later
 
       - ![JS change 1](./doc/js_change_1.png 'JS change #1')
       - ```javascript
@@ -84,12 +84,12 @@ You can access a variety of pretrained models from https://www.tensorflow.org/js
         }
         ```
 
-   2. Change #2
+   2. Change #2: Load the machine learning model and store it for later
       - ![JS change 2](./doc/js_change_2.png 'JS change #2')
       - ```javascript
         getModel();
         ```
-   3. Change #3
+   3. Change #3: Use the machine learning model to predict the objects in the picture and label them in the picture
 
       - ![JS change 3](./doc/js_change_3.png 'JS change #3')
       - ```javascript
